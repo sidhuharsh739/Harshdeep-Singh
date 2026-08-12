@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshdeep Singh | CSE Student</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050816;
+    color:white;
+    overflow:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00f5ff;
+    filter:blur(180px);
+    opacity:.12;
+    top:-150px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#8a2be2;
+    filter:blur(180px);
+    opacity:.12;
+    bottom:-200px;
+    right:-150px;
+    z-index:-2;
+}
+
+/* SLIDER */
+.slider{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    transition:transform .8s cubic-bezier(.77,0,.18,1);
+}
+
+.slide{
+    min-width:100vw;
+    height:100vh;
+    padding:70px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+    background:rgba(5,8,22,.45);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-family:'Orbitron';
+    font-size:22px;
+    color:#00f5ff;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#fff;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu button{
+    background:none;
+    border:none;
+    color:#aaa;
+    cursor:pointer;
+    font-family:'Poppins';
+    transition:.3s;
+}
+
+.menu button:hover,
+.menu button.active{
+    color:#00f5ff;
+}
+
+/* HOME */
+.home-content{
+    max-width:1100px;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:50px;
+    align-items:center;
+}
+
+.tag{
+    display:inline-block;
+    border:1px solid #00f5ff;
+    color:#00f5ff;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:'Orbitron';
+    font-size:clamp(42px,7vw,85px);
+    line-height:1.05;
+}
+
+h1 span{
+    color:#00f5ff;
+    text-shadow:0 0 25px #00f5ff;
+}
+
+.home-text p{
+    color:#aaa;
+    margin:25px 0;
+    max-width:600px;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:13px 25px;
+    border-radius:30px;
+    border:1px solid #00f5ff;
+    color:#00f5ff;
+    background:transparent;
+    cursor:pointer;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn.primary{
+    background:#00f5ff;
+    color:#050816;
+    font-weight:bold;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(0,245,255,.4);
+}
+
+/* PROFILE ORB */
+.orb{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    border:1px solid rgba(0,245,255,.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    animation:float 4s ease-in-out infinite;
+}
+
+.orb::before,
+.orb::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(0,245,255,.4);
+}
+
+.orb::before{
+    width:370px;
+    height:170px;
+    transform:rotate(30deg);
+}
+
+.orb::after{
+    width:170px;
+    height:370px;
+    transform:rotate(30deg);
+}
+
+.orb-text{
+    text-align:center;
+    z-index:2;
+}
+
+.orb-text strong{
+    display:block;
+    font-family:'Orbitron';
+    font-size:55px;
+    color:#00f5ff;
+}
+
+.orb-text small{
+    color:#aaa;
+}
+
+@keyframes float{
+    50%{transform:translateY(-20px)}
+}
+
+/* GENERAL */
+.container{
+    width:100%;
+    max-width:1100px;
+}
+
+.section-title{
+    font-family:'Orbitron';
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.section-title span{
+    color:#00f5ff;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:30px;
+}
+
+/* ABOUT */
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.glass{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:30px;
+    backdrop-filter:blur(15px);
+    transition:.4s;
+}
+
+.glass:hover{
+    transform:translateY(-8px);
+    border-color:#00f5ff;
+    box-shadow:0 0 30px rgba(0,245,255,.1);
+}
+
+.glass h3{
+    color:#00f5ff;
+    margin-bottom:15px;
+}
+
+.glass p{
+    color:#aaa;
+    line-height:1.8;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:20px;
+}
+
+.info div{
+    padding:15px;
+    background:rgba(0,245,255,.04);
+    border-radius:10px;
+}
+
+.info b{
+    color:#00f5ff;
+    display:block;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+/* SKILLS */
+.skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.skill{
+    margin-bottom:20px;
+}
+
+.skill-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+
+.skill-header span:first-child{
+    color:#ddd;
+}
+
+.skill-header span:last-child{
+    color:#00f5ff;
+}
+
+.bar{
+    height:7px;
+    background:#151a2e;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    background:linear-gradient(90deg,#00f5ff,#8a2be2);
+    border-radius:10px;
+    animation:load 2s ease;
+}
+
+@keyframes load{
+    from{width:0}
+}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.project{
+    padding:25px;
+    min-height:230px;
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.1);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.project:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:#00f5ff;
+}
+
+.project-number{
+    font-family:'Orbitron';
+    font-size:45px;
+    color:rgba(0,245,255,.15);
+    position:absolute;
+    right:15px;
+    top:5px;
+}
+
+.project h3{
+    color:#00f5ff;
+    margin:20px 0 10px;
+}
+
+.project p{
+    color:#999;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.project-tag{
+    display:inline-block;
+    margin-top:15px;
+    padding:5px 10px;
+    background:rgba(0,245,255,.1);
+    color:#00f5ff;
+    border-radius:5px;
+    font-size:11px;
+}
+
+/* EDUCATION */
+.timeline{
+    border-left:2px solid #00f5ff;
+    padding-left:30px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:35px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#00f5ff;
+    left:-37px;
+    top:5px;
+    box-shadow:0 0 15px #00f5ff;
+}
+
+.timeline-item h3{
+    color:#00f5ff;
+}
+
+.timeline-item h4{
+    margin:5px 0;
+}
+
+.timeline-item p{
+    color:#999;
+}
+
+/* CONTACT */
+.contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.contact h2{
+    font-family:'Orbitron';
+    font-size:45px;
+}
+
+.contact h2 span{
+    color:#00f5ff;
+}
+
+.contact p{
+    color:#999;
+    line-height:1.8;
+    margin:20px 0;
+}
+
+.socials{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.social{
+    padding:13px 20px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+    color:#ccc;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.social:hover{
+    color:#00f5ff;
+    border-color:#00f5ff;
+    transform:translateY(-4px);
+}
+
+/* NAV ARROWS */
+.controls{
+    position:fixed;
+    bottom:30px;
+    right:7%;
+    z-index:100;
+    display:flex;
+    gap:10px;
+}
+
+.arrow{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid #00f5ff;
+    background:rgba(0,0,0,.4);
+    color:#00f5ff;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.arrow:hover{
+    background:#00f5ff;
+    color:#050816;
+}
+
+/* PAGE COUNTER */
+.counter{
+    position:fixed;
+    bottom:35px;
+    left:7%;
+    z-index:100;
+    font-family:'Orbitron';
+    color:#666;
+}
+
+.counter span{
+    color:#00f5ff;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+
+    body{
+        overflow:hidden;
+    }
+
+    .navbar{
+        padding:18px 5%;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .slide{
+        padding:90px 7% 70px;
+        overflow-y:auto;
+    }
+
+    .home-content,
+    .about-grid,
+    .skills-grid,
+    .contact{
+        grid-template-columns:1fr;
+    }
+
+    .orb{
+        width:190px;
+        height:190px;
+        margin:auto;
+    }
+
+    .orb::before{
+        width:240px;
+    }
+
+    .orb::after{
+        height:240px;
+    }
+
+    .orb-text strong{
+        font-size:35px;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:45px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .contact h2{
+        font-size:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        HS SIDHU<span>.</span>
+    </div>
+
+    <div class="menu">
+        <button onclick="goTo(0)" class="active">HOME</button>
+        <button onclick="goTo(1)">ABOUT</button>
+        <button onclick="goTo(2)">SKILLS</button>
+        <button onclick="goTo(3)">PROJECTS</button>
+        <button onclick="goTo(4)">EDUCATION</button>
+        <button onclick="goTo(5)">CONTACT</button>
+    </div>
+
+</nav>
+
+
+<!-- SLIDES -->
+<div class="slider" id="slider">
+
+    <!-- HOME -->
+    <section class="slide">
+
+        <div class="home-content">
+
+            <div class="home-text">
+
+                <div class="tag">
+                    BTECH CSE • 5TH SEMESTER
+                </div>
+
+                <h1>
+                    Hi, I'm<br>
+                    <span>Harshdeep</span><br>
+                    Singh.
+                </h1>
+
+                <p>
+                    A passionate Computer Science Engineering student
+                    who loves technology, coding and creating modern
+                    digital experiences.
+                </p>
+
+                <div class="buttons">
+                    <button class="btn primary" onclick="goTo(1)">
+                        Explore Me →
+                    </button>
+
+                    <button class="btn" onclick="goTo(5)">
+                        Contact Me
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="orb">
+
+                <div class="orb-text">
+                    <strong>HS</strong>
+                    <small>CODE • CREATE • INNOVATE</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="slide">
+
+        <div class="container">
+
+            <div class="section-title">
+                About <span>Me</span>
+            </div>
+
+            <p class="subtitle">
+                A little introduction about who I am.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="glass">
+
+                    <h3>Who Am I?</h3>
+
+                    <p>
+                        I'm Harshdeep Singh, a B.Tech Computer Science
+                        Engineering student currently studying in my
+                        5th semester. I am interested in software
+                        development, web technologies and learning
+                        new technologies.
+                    </p>
+
+                    <p style="margin-top:15px;">
+                        My goal is to continuously improve my technical
+                        skills and build projects that combine
+                        creativity with technology.
+                    </p>
+
+                </div>
+
+                <div class="glass">
+
+                    <h3>Quick Info</h3>
+
+                    <div class="info">
+
+                        <div>
+                            <b>NAME</b>
+                            Harshdeep Singh
+                        </div>
+
+                        <div>
+                            <b>COURSE</b>
+                            B.Tech CSE
+                        </div>
+
+                        <div>
+                            <b>SEMESTER</b>
+                            5th Semester
+                        </div>
+
+                        <div>
+                            <b>FIELD</b>
+                            Computer Science
+                        </div>
+
+                        <div>
+                            <b>INTEREST</b>
+                            Technology
+                        </div>
+
+                        <div>
+                            <b>GOAL</b>
+                            Software Developer
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section class="slide">
+
+        <div class="container">
+
+            <div class="section-title">
+                My <span>Skills</span>
+            </div>
+
+            <p class="subtitle">
+                Technologies and areas I'm currently learning.
+            </p>
+
+            <div class="skills-grid">
+
+                <div class="glass">
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>HTML</span>
+                            <span>90%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>CSS</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <span>75%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>Python</span>
+                            <span>70%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:70%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="glass">
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>C / C++</span>
+                            <span>75%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>SQL</span>
+                            <span>65%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:65%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>Problem Solving</span>
+                            <span>80%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span>UI Design</span>
+                            <span>70%</span>
+                        </div>
+
+                        <div class="bar">
+                            <div class="progress" style="width:70%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="slide">
+
+        <div class="container">
+
+            <div class="section-title">
+                My <span>Projects</span>
+            </div>
+
+            <p class="subtitle">
+                Some projects that represent my learning and creativity.
+            </p>
+
+            <div class="projects">
+
+                <div class="project">
+
+                    <div class="project-number">01</div>
+
+                    <h3>Portfolio Website</h3>
+
+                    <p>
+                        A modern responsive personal portfolio website
+                        designed to showcase my skills, projects and
+                        academic journey.
+                    </p>
+
+                    <span class="project-tag">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-number">02</div>
+
+                    <h3>Student Management</h3>
+
+                    <p>
+                        A student management system concept for storing
+                        and managing student information efficiently.
+                    </p>
+
+                    <span class="project-tag">
+                        C++ • SQL
+                    </span>
+
+                </div>
+
+
+                <div class="project">
+
+                    <div class="project-number">03</div>
+
+                    <h3>Web Application</h3>
+
+                    <p>
+                        A responsive web application created to
+                        experiment with modern frontend design and
+                        JavaScript interactions.
+                    </p>
+
+                    <span class="project-tag">
+                        HTML • CSS • JS
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section class="slide">
+
+        <div class="container">
+
+            <div class="section-title">
+                My <span>Journey</span>
+            </div>
+
+            <p class="subtitle">
+                My educational journey so far.
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>2024 — Present</h3>
+
+                    <h4>B.Tech Computer Science Engineering</h4>
+
+                    <p>
+                        Currently pursuing B.Tech CSE and studying
+                        in 5th semester.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>2023 — 2024</h3>
+
+                    <h4>Higher Secondary Education</h4>
+
+                    <p>
+                        Completed higher secondary education and
+                        developed interest in computer science.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>Academic Growth</h3>
+
+                    <h4>Learning • Exploring • Building</h4>
+
+                    <p>
+                        Continuously improving programming skills,
+                        exploring web development and building
+                        personal projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="slide">
+
+        <div class="container">
+
+            <div class="contact">
+
+                <div>
+
+                    <div class="tag">
+                        LET'S CONNECT
+                    </div>
+
+                    <h2>
+                        Let's build<br>
+                        something <span>great.</span>
+                    </h2>
+
+                    <p>
+                        I'm always interested in learning new things,
+                        working on interesting projects and connecting
+                        with people who love technology.
+                    </p>
+
+                    <div class="socials">
+
+                        <a class="social"
+                           href="https://instagram.com/harsh_sidhux"
+                           target="_blank">
+                           Instagram
+                        </a>
+
+                        <a class="social"
+                           href="https://facebook.com/Sidhu.harshx"
+                           target="_blank">
+                           Facebook
+                        </a>
+
+                        <a class="social"
+                           href="sidhuharsh739@gmail.com">
+                           Email
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass">
+
+                    <h3>CONTACT DETAILS</h3>
+
+                    <div class="info">
+
+                        <div>
+                            <b>NAME</b>
+                            Harshdeep Singh
+                        </div>
+
+                        <div>
+                            <b>COURSE</b>
+                            B.Tech CSE
+                        </div>
+
+                        <div>
+                            <b>SEMESTER</b>
+                            5th
+                        </div>
+
+                        <div>
+                            <b>STATUS</b>
+                            Student
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <p>
+                        📧 sidhuharsh739@gmail.com
+                    </p>
+
+                    <p>
+                        📱 +91 98726 56581
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- PAGE COUNTER -->
+<div class="counter">
+    <span id="current">01</span> / 06
+</div>
+
+<script>
+
+let currentSlide = 0;
+
+const slider = document.getElementById("slider");
+const counter = document.getElementById("current");
+const menuButtons = document.querySelectorAll(".menu button");
+
+function goTo(index){
+
+    if(index < 0) index = 0;
+    if(index > 5) index = 5;
+
+    currentSlide = index;
+
+    slider.style.transform =
+        `translateX(-${currentSlide * 100}vw)`;
+
+    counter.textContent =
+        String(currentSlide + 1).padStart(2,'0');
+
+    menuButtons.forEach((button,i)=>{
+        button.classList.toggle(
+            "active",
+            i === currentSlide
+        );
+    });
+}
+
+function nextSlide(){
+
+    if(currentSlide < 5){
+        goTo(currentSlide + 1);
+    }else{
+        goTo(0);
+    }
+
+}
+
+function previousSlide(){
+
+    if(currentSlide > 0){
+        goTo(currentSlide - 1);
+    }else{
+        goTo(5);
+    }
+
+}
+
+
+/* KEYBOARD NAVIGATION */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "ArrowRight"){
+        nextSlide();
+    }
+
+    if(e.key === "ArrowLeft"){
+        previousSlide();
+    }
+
+});
+
+
+/* MOUSE WHEEL NAVIGATION */
+
+let wheelLock = false;
+
+document.addEventListener("wheel",function(e){
+
+    if(wheelLock) return;
+
+    wheelLock = true;
+
+    if(e.deltaY > 0){
+        nextSlide();
+    }else{
+        previousSlide();
+    }
+
+    setTimeout(()=>{
+        wheelLock = false;
+    },900);
+
+});
+
+
+/* TOUCH SWIPE */
+
+let touchStart = 0;
+
+document.addEventListener("touchstart",function(e){
+    touchStart = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend",function(e){
+
+    let touchEnd = e.changedTouches[0].screenX;
+
+    if(touchStart - touchEnd > 50){
+        nextSlide();
+    }
+
+    if(touchEnd - touchStart > 50){
+        previousSlide();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
